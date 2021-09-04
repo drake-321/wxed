@@ -84,8 +84,8 @@ void Wxed::run()
   std::vector<Panel*> panels{
     new TitleBar(),
     new ScrollBar(),
-    new FileContent(),
-    new Footer()
+    //new FileContent(),
+    //new Footer()
   };
 
   // main loop
