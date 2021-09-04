@@ -2,6 +2,7 @@
 
 #include <string>
 
+#include "common.h"
 #include "panel.h"
 #include "utils.h"
 
@@ -16,6 +17,6 @@ public:
   }
 
   void render() override {
-    print_at(0, 0, "wxed");
+    print_at(0, 0, "wxed %s", WX_Version);
   }
 };

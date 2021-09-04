@@ -47,5 +47,8 @@
     <ClInclude Include="titlebar.h">
       <Filter>code\ui</Filter>
     </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>code</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -18,7 +18,11 @@ public:
 
   void refresh() const;
 
-  void print_at(int x, int y, std::string_view string) const;
+  template<typename... Targs>
+  void print_at(int x, int y, std::string_view fmt, Targs... Fargs)
+  {
+    ::mvwprintw(m_window.get(), y, x, fmt.data(), Fargs...);
+  }
 
   virtual void render() = 0;
 

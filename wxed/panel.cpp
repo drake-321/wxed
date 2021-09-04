@@ -32,7 +32,3 @@ void Panel::refresh() const
   ::wrefresh(m_window.get());
 }
 
-void Panel::print_at(int x, int y, std::string_view string) const
-{
-  ::mvwprintw(m_window.get(), m_posY + y, m_posX + x, string.data());
-}
