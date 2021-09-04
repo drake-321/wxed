@@ -26,6 +26,8 @@ protected:
   std::unique_ptr<WINDOW, WINDOW_Deleter> m_window;
 
 private:
+  inline static unsigned sm_colorPairIndex;
+
   int m_posX, m_posY, m_width, m_height, m_foregroundColor, m_backgroundColor;
 };
 
