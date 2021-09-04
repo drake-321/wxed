@@ -10,7 +10,7 @@ Panel::Panel(int posX, int posY, int width, int height, int foreground_color, in
 {
   m_window = std::unique_ptr<WINDOW, WINDOW_Deleter>(::newwin(height,width,posY,posX));
 
-  ::init_pair(1, foreground_color, background_color);
+  ::init_pair(1, m_foregroundColor, m_backgroundColor);
   ::wbkgd(m_window.get(), COLOR_PAIR(1));
   ::touchwin(m_window.get());
 }
