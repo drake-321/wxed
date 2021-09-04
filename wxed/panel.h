@@ -22,6 +22,7 @@ public:
   template<typename... Targs>
   inline void print_at(int x, int y, std::string_view fmt, Targs... Fargs)
   {
+    // check arguments are formattable with the following curses function
     ::mvwprintw(m_window.get(), y, x, fmt.data(), Fargs...);
   }
 
