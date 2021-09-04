@@ -2,6 +2,7 @@
 
 #include <string_view>
 #include <memory>
+#include <type_traits>
 
 #include <curses.h>
 
@@ -16,10 +17,10 @@ public:
   Panel(int posX, int posY, int width, int height, int foreground_color, int background_color);
   ~Panel();
 
-  void refresh() const;
+  inline void refresh() const;
 
   template<typename... Targs>
-  void print_at(int x, int y, std::string_view fmt, Targs... Fargs)
+  inline void print_at(int x, int y, std::string_view fmt, Targs... Fargs)
   {
     ::mvwprintw(m_window.get(), y, x, fmt.data(), Fargs...);
   }
