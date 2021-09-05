@@ -81,10 +81,10 @@ void Wxed::run()
 {
   auto& input_processor = InputProcessor::get_instance();
 
-  std::vector<Panel*> panels{
-    new TitleBar(),
+  std::vector<Panel *> panels{
+    new TitleBar()
     //new ScrollBar(),
-    new FileContent(),
+    //new FileContent(),
     //new Footer()
   };
 

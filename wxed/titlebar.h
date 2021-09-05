@@ -17,6 +17,6 @@ public:
   }
 
   void render() override {
-    print_at(0, 0, "wxed %s", WX_Version);
+    print_at(0, 0, "wxed");
   }
 };

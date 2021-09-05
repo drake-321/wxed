@@ -1,5 +1,7 @@
 #include "panel.h"
 
+unsigned Panel::sm_colorPairIndex = 1;
+
 void WINDOW_Deleter::operator()(struct _win* window) const
 {
   ::delwin(window);
@@ -8,12 +10,7 @@ void WINDOW_Deleter::operator()(struct _win* window) const
 Panel::Panel(int posX, int posY, int width, int height, int foreground_color, int background_color)
   : m_posX(posX), m_posY(posY), m_width(width), m_height(height), m_foregroundColor(foreground_color), m_backgroundColor(background_color)
 {
-  if (!sm_colorPairIndex)
-  {
-    sm_colorPairIndex = 1;
-  }
-
-  m_window = std::unique_ptr<WINDOW, WINDOW_Deleter>(::newwin(height,width,posY,posX));
+  m_window = std::unique_ptr<WINDOW, WINDOW_Deleter>(::newwin(height, width, posY, posX));
 
   ::init_pair(sm_colorPairIndex, m_foregroundColor, m_backgroundColor);
   ::wbkgd(m_window.get(), COLOR_PAIR(sm_colorPairIndex));
@@ -25,10 +22,5 @@ Panel::Panel(int posX, int posY, int width, int height, int foreground_color, in
 
 Panel::~Panel()
 {
-}
-
-void Panel::refresh() const
-{
-  ::wrefresh(m_window.get());
 }
 
