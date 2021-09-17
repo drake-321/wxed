@@ -9,6 +9,7 @@
 #include <curses.h>
 
 #include "input.h"
+#include "keybinds.h"
 
 #include "titlebar.h"
 #include "scrollbar.h"
@@ -48,42 +49,20 @@ void Wxed::init()
 
   ::start_color();
 
-  //// register keybinds
-  //auto& input_processor = InputProcessor::get_instance();
-  //input_processor.register_keybind('h', []() {
-  //  int y, x;
-  //  getyx(::stdscr, y, x);
-  //  ::move(y, x - 1);
-  //  });
-
-  //input_processor.register_keybind('j', []() {
-  //  int y, x;
-  //  getyx(::stdscr, y, x);
-  //  ::move(y + 1, x);
-  //  });
-
-  //input_processor.register_keybind('k', []() {
-  //  int y, x;
-  //  getyx(::stdscr, y, x);
-  //  ::move(y - 1, x);
-  //  });
-
-  //input_processor.register_keybind('l', []() {
-  //  int y, x;
-  //  getyx(::stdscr, y, x);
-  //  ::move(y, x + 1);
-  //  });
-
+  keybinds::register_default_keybinds();
 
   m_initialized = true;
 }
 
-void Wxed::run()
+void Wxed::run(std::filesystem::path file_path)
 {
   auto& input_processor = InputProcessor::get_instance();
 
   std::vector<std::unique_ptr<Panel>> panels;
   panels.push_back(std::make_unique<TitleBar>());
+  panels.push_back(std::make_unique<ScrollBar>());
+  panels.push_back(std::make_unique<FileContent>(file_path));
+  panels.push_back(std::make_unique<Footer>());
 
   // main loop
   while (true)

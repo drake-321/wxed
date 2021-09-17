@@ -21,7 +21,12 @@
     <ClCompile Include="panel.cpp">
       <Filter>code</Filter>
     </ClCompile>
-    <ClCompile Include="settings_manager.cpp" />
+    <ClCompile Include="settings_manager.cpp">
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="filecontent.cpp">
+      <Filter>code\ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="wxed.h">
@@ -52,6 +57,9 @@
       <Filter>code</Filter>
     </ClInclude>
     <ClInclude Include="settings_manager.h">
+      <Filter>code</Filter>
+    </ClInclude>
+    <ClInclude Include="keybinds.h">
       <Filter>code</Filter>
     </ClInclude>
   </ItemGroup>

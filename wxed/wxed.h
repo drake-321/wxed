@@ -1,5 +1,7 @@
 #pragma once
 
+#include <filesystem>
+
 class Wxed
 {
 public:
@@ -17,7 +19,7 @@ public:
   Wxed(Wxed const&) = delete;
   void operator=(Wxed const&) = delete;
 
-  void run();
+  void run(std::filesystem::path file_path);
 
 private:
   void init();

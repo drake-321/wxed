@@ -1,5 +1,7 @@
 #pragma once
 
+#include <filesystem>
+
 #include "panel.h"
 #include "utils.h"
 
@@ -8,12 +10,16 @@ using namespace utils;
 class FileContent : public Panel
 {
 public:
-  FileContent()
-    : Panel(1, 1, get_curses_max_x(), get_curses_max_y() - 1, COLOR_WHITE, COLOR_BLACK)
-  {
-  }
+  FileContent(std::filesystem::path file_path);
 
   void render() override {
-    //print_at(10, 10, "hello world");
+    print_hex_output();
   }
+
+private:
+  void print_hex_output();
+  void move_position(int offset);
+
+  std::filesystem::path m_file_path;
+  unsigned m_position = 0;
 }; 

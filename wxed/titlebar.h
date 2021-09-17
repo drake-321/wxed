@@ -17,7 +17,6 @@ public:
   }
 
   void render() override {
-    std::string s = "hello";
-    print_at(0, 0, "wxed %d", 2, "222");
+    print_at(0, 0, "wxed %s", WX_Version);
   }
 };

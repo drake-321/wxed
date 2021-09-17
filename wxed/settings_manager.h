@@ -26,8 +26,8 @@ public:
   SettingsManager(SettingsManager const&) = delete;
   void operator=(SettingsManager const&) = delete;
 
-  std::string_view get_option(std::string_view option);
-  void set_option(std::string_view option, std::string_view value);
+  std::string_view get_option(SettingKey option);
+  void set_option(SettingKey option, std::string_view value);
 
 
 private:
