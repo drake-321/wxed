@@ -146,6 +146,7 @@
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="panel.cpp" />
+    <ClCompile Include="settings_manager.cpp" />
     <ClCompile Include="wxed.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +156,7 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="panel.h" />
     <ClInclude Include="scrollbar.h" />
+    <ClInclude Include="settings_manager.h" />
     <ClInclude Include="titlebar.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="wxed.h" />

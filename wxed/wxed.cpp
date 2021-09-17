@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <memory>
+#include <iterator>
 
 #include <curses.h>
 
@@ -81,30 +82,21 @@ void Wxed::run()
 {
   auto& input_processor = InputProcessor::get_instance();
 
-  std::vector<Panel *> panels{
-    new TitleBar()
-    //new ScrollBar(),
-    //new FileContent(),
-    //new Footer()
-  };
+  std::vector<std::unique_ptr<Panel>> panels;
+  panels.push_back(std::make_unique<TitleBar>());
 
   // main loop
   while (true)
   {
     ::refresh();
 
-    std::for_each(panels.begin(), panels.end(), [](Panel* panel) {
-      panel->render();
-      panel->refresh();
-      });
+    for (auto& panel : panels)
+    {
+      panel.get()->render();
+      panel.get()->refresh();
+    }
 
     input_processor.process();
   }
-
-  // cleanup
-  std::for_each(panels.begin(), panels.end(), [](Panel* panel) {
-    delete panel;
-    panel = nullptr;
-    });
 }
 

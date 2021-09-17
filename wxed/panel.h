@@ -11,6 +11,17 @@ struct WINDOW_Deleter
   void operator()(struct _win* window) const;
 };
 
+//template<typename... Ts>
+//struct is_string_v : public std::disjunction_v<
+//  std::is_same_v<char*, typename std::decay_t<Ts> && ...>,
+//  std::is_same_v<const char*, typename std::decay_t<Ts> && ...>
+//> {};
+
+//template<typename... Ts>
+//concept is_formattable_v = requires {
+//  std::disjunction_v<std::is_fundamental_v<Ts ...>, is_string_v<Ts ...>>;
+//};
+
 class Panel
 {
 public:
@@ -22,10 +33,9 @@ public:
     ::wrefresh(m_window.get());
   }
 
-  template<typename... Targs>
-  inline void print_at(int x, int y, std::string_view fmt, Targs... Fargs)
+  template<typename... Ts> // <is_formattable_v... Ts>
+  inline void print_at(int x, int y, std::string_view fmt, Ts... Fargs)
   {
-    // check arguments are formattable with the following curses function
     ::mvwprintw(m_window.get(), y, x, fmt.data(), Fargs...);
   }
 

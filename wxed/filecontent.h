@@ -14,6 +14,6 @@ public:
   }
 
   void render() override {
-    print_at(10, 10, "hello world");
+    //print_at(10, 10, "hello world");
   }
 }; 

@@ -26,5 +26,5 @@ public:
   void register_keybind(char key, fn_ptr callback);
 
 private:
-  std::map<char, fn_ptr> keybinds{};
+  std::map<char, fn_ptr> m_keybinds{};
 };

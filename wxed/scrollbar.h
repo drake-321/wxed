@@ -14,7 +14,7 @@ public:
   }
 
   void render() override {
-    print_at(0, 0, "-");
+    //print_at(0, 0, "-");
     refresh();
   }
 };
