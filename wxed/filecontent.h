@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 #include <filesystem>
 
 #include "panel.h"
@@ -20,6 +21,6 @@ private:
   void print_hex_output();
   void move_position(int offset);
 
-  std::filesystem::path m_file_path;
+  std::vector<char> m_file_bytes;
   unsigned m_position = 0;
 }; 
