@@ -29,7 +29,6 @@ public:
   std::string_view get_option(SettingKey option);
   void set_option(SettingKey option, std::string_view value);
 
-
 private:
   void load_from_file(std::filesystem::path path);
 

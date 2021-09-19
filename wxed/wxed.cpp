@@ -71,8 +71,8 @@ void Wxed::run(std::filesystem::path file_path)
 
     for (auto& panel : panels)
     {
-      panel.get()->render();
-      panel.get()->refresh();
+      panel->render();
+      panel->refresh();
     }
 
     input_processor.process();

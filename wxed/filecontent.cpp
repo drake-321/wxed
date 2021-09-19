@@ -7,6 +7,16 @@ FileContent::FileContent(std::filesystem::path file_path)
   : Panel(1, 1, get_curses_max_x() - 1, get_curses_max_y() - 1, COLOR_WHITE, COLOR_BLACK)
 {
   std::ifstream input{ file_path, std::ios::binary };
+
+  //m_file_bytes = std::vector<char>();
+
+  //auto file_size = input.tellg();
+  //m_file_bytes.reserve(file_size);
+
+  //input.seekg({ 0 });
+
+  //m_file_bytes.assign(std::istreambuf_iterator<char>(input), std::istream_iterator<char>());
+
   m_file_bytes = std::vector<char>({
     std::istreambuf_iterator<char>(input),
     std::istreambuf_iterator<char>()
