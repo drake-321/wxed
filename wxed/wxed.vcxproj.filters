@@ -27,6 +27,9 @@
     <ClCompile Include="filecontent.cpp">
       <Filter>code\ui</Filter>
     </ClCompile>
+    <ClCompile Include="keybinds.cpp">
+      <Filter>code</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="wxed.h">

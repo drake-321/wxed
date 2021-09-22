@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <filesystem>
+#include <cstdint>
 
 #include "panel.h"
 #include "utils.h"
@@ -17,9 +18,10 @@ public:
     print_hex_output();
   }
 
+  void move_position(int offset);
+
 private:
   void print_hex_output();
-  void move_position(int offset);
 
   std::vector<char> m_file_bytes;
   unsigned m_position = 0;
