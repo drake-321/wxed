@@ -4,7 +4,7 @@
 #include <iterator>
 
 FileContent::FileContent(std::filesystem::path file_path)
-  : Panel(1, 1, get_curses_max_x() - 1, get_curses_max_y() - 1, COLOR_WHITE, COLOR_BLACK)
+  : Panel("FileContent", 1, 1, get_curses_max_x() - 1, get_curses_max_y() - 1, COLOR_WHITE, COLOR_BLACK)
 {
   std::ifstream input{ file_path, std::ios::binary };
 

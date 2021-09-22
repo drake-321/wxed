@@ -9,7 +9,7 @@ class Footer : public Panel
 {
 public:
   Footer()
-    : Panel(0, get_curses_max_y() - 1, get_curses_max_x(), 1, COLOR_BLACK, COLOR_WHITE)
+    : Panel("Footer", 0, get_curses_max_y() - 1, get_curses_max_x(), 1, COLOR_BLACK, COLOR_WHITE)
   {
   }
 

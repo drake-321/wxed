@@ -1,8 +1,8 @@
 #pragma once
 
-#include <curses.h>
+#include <memory>
 
-#include "input.h"
+#include <curses.h>
 
 class Keybinds
 {
@@ -21,7 +21,7 @@ public:
   Keybinds(Keybinds const&) = delete;
   void operator=(Keybinds const&) = delete;
 
-  void register_all();
+  void register_all(const std::vector<std::unique_ptr<Panel>>& panels);
 
 private:
   void register_filecontent_keybinds(FileContent& file_content);

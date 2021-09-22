@@ -12,7 +12,7 @@ class TitleBar : public Panel
 {
 public:
   TitleBar()
-    : Panel(0, 0, get_curses_max_x(), 1, COLOR_BLACK, COLOR_WHITE)
+    : Panel("TitleBar", 0, 0, get_curses_max_x(), 1, COLOR_BLACK, COLOR_WHITE)
   {
   }
 

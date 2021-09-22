@@ -1,17 +1,25 @@
 #include "keybinds.h"
 
 #include <memory>
+#include <algorithm>
 
+#include "input.h"
 #include "filecontent.h"
 
-void Keybinds::register_all(const std::vector<unique_ptr<Panel>>& panels)
+void Keybinds::register_all(const std::vector<std::unique_ptr<Panel>>& panels)
 {
   if (sm_registered)
   {
     return;
   }
 
-  register_filecontent_keybinds()
+  auto it = std::ranges::find(panels, [](const std::unique_ptr<Panel>& panel) {
+    panel->get_name()
+    });
+
+  //auto file_content_ref = dynamic_cast<FileContent&>()
+
+  //register_filecontent_keybinds()
 
   sm_registered = true;
 }

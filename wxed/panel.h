@@ -28,7 +28,7 @@ struct WINDOW_Deleter
 class Panel
 {
 public:
-  Panel(int posX, int posY, int width, int height, int foreground_color, int background_color);
+  Panel(std::string_view name, int posX, int posY, int width, int height, int foreground_color, int background_color);
   ~Panel();
 
   inline void refresh() const
@@ -42,6 +42,11 @@ public:
     ::mvwprintw(m_window.get(), y, x, fmt.data(), Fargs...);
   }
 
+  inline std::string_view get_name()
+  {
+    return m_name;
+  }
+
   virtual void render() = 0;
 
 protected:
@@ -50,6 +55,7 @@ protected:
 private:
   static unsigned sm_colorPairIndex;
 
+  std::string_view m_name;
   int m_posX, m_posY, m_width, m_height, m_foregroundColor, m_backgroundColor;
 };
 

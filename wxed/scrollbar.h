@@ -9,7 +9,7 @@ class ScrollBar : public Panel
 {
 public:
   ScrollBar()
-    : Panel(0, 1, 1, get_curses_max_y(), COLOR_BLACK, COLOR_WHITE)
+    : Panel("ScrollBar", 0, 1, 1, get_curses_max_y(), COLOR_BLACK, COLOR_WHITE)
   {
   }
 
