@@ -22,6 +22,9 @@ struct WINDOW_Deleter
 //  std::disjunction_v<std::is_fundamental_v<Ts ...>, is_string_v<Ts ...>>;
 //};
 
+// maybe turn this into an inheritable abstract singleton class
+// https://sourcemaking.com/design_patterns/singleton/cpp/2
+
 class Panel
 {
 public:
