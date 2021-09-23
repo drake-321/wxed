@@ -37,7 +37,7 @@ public:
   }
 
   template<typename... Ts> // <is_formattable_v... Ts>
-  inline void print_at(int x, int y, std::string_view fmt, Ts... Fargs)
+  inline void print_at(unsigned x, unsigned y, std::string_view fmt, Ts... Fargs) const
   {
     ::mvwprintw(m_window.get(), y, x, fmt.data(), Fargs...);
   }

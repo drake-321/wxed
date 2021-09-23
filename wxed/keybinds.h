@@ -4,6 +4,8 @@
 
 #include <curses.h>
 
+#include "ui.h"
+
 class Keybinds
 {
 public:
@@ -14,8 +16,8 @@ public:
   }
 
 private:
-  Keybinds();
-  ~Keybinds();
+  Keybinds() = default;
+  ~Keybinds() = default;
 
 public:
   Keybinds(Keybinds const&) = delete;
@@ -24,25 +26,12 @@ public:
   void register_all(const std::vector<std::unique_ptr<Panel>>& panels);
 
 private:
+  //template<typename ComponentT>
+  //void register_component_keybinds(ComponentT& component)
+
+  //void register_titlebar_keybinds(TitleBar& title_bar);
+  //void register_scrollbar_keybinds(ScrollBar& scroll_bar);
   void register_filecontent_keybinds(FileContent& file_content);
+  //void register_footer_keybinds(Footer& footer);
+};
 
-  static bool sm_registered;
-}
-
-
-  //static void register_default_keybinds()
-  //{
-  //  // register keybinds
-  //  auto& input_processor = InputProcessor::get_instance();
-  //  input_processor.register_keybind('j', []() {
-  //    int y, x;
-  //    getyx(::stdscr, y, x);
-  //    ::move(y + 1, x);
-  //    });
-
-  //  input_processor.register_keybind('k', []() {
-  //    int y, x;
-  //    getyx(::stdscr, y, x);
-  //    ::move(y - 1, x);
-  //    });
-  //}

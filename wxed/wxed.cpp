@@ -11,10 +11,7 @@
 #include "input.h"
 #include "keybinds.h"
 
-#include "titlebar.h"
-#include "scrollbar.h"
-#include "filecontent.h"
-#include "footer.h"
+#include "ui.h"
 
 Wxed::Wxed()
 {
@@ -49,8 +46,6 @@ void Wxed::init()
 
   ::start_color();
 
-  keybinds::register_default_keybinds();
-
   m_initialized = true;
 }
 
@@ -63,6 +58,9 @@ void Wxed::run(std::filesystem::path file_path)
   panels.push_back(std::make_unique<ScrollBar>());
   panels.push_back(std::make_unique<FileContent>(file_path));
   panels.push_back(std::make_unique<Footer>());
+
+  // register keybinds
+  //Keybinds::get_instance().register_all(panels);
 
   // main loop
   while (true)

@@ -2,9 +2,13 @@
 
 #include <fstream>
 #include <iterator>
+#include <cstdint>
+
+#include "common.h"
+#include "utils.h"
 
 FileContent::FileContent(std::filesystem::path file_path)
-  : Panel("FileContent", 1, 1, get_curses_max_x() - 1, get_curses_max_y() - 1, COLOR_WHITE, COLOR_BLACK)
+  : Panel(WX_UIComponentNames[WX_UIComponentIdentifiers::FileContentComponent], 0, 1, 1, utils::get_curses_max_y(), COLOR_BLACK, COLOR_WHITE)
 {
   std::ifstream input{ file_path, std::ios::binary };
 
@@ -23,15 +27,20 @@ FileContent::FileContent(std::filesystem::path file_path)
     });
 }
 
+void FileContent::render()
+{
+  print_hex_output();
+}
+
 void FileContent::print_hex_output()
 {
   bool exit_loop = false;
 
-  for (unsigned i = m_position; i < (get_curses_max_y() - 2) * 16; i += 16)
+  for (uint64 i = m_position; i < (utils::get_curses_max_y() - 2) * 16; i += 16)
   {
     // print bytes in hex
     unsigned hex_cursor_position_offset = 11;
-    for (unsigned j = 0; j < 16; j++)
+    for (uint64 j = 0; j < 16; j++)
     {
       // check if we reached end of data. if so, set exit_loop to true
       if (i + j > m_file_bytes.size() - 1)
@@ -46,7 +55,7 @@ void FileContent::print_hex_output()
 
     // print alphanumeric characters
     unsigned ascii_cursor_position_offset = 60;
-    for (unsigned j = 0; j < 16; j++)
+    for (uint64 j = 0; j < 16; j++)
     {
       // don't reach end of data. if we have, we already set
       // exit_loop earlier so just break
@@ -70,11 +79,21 @@ void FileContent::print_hex_output()
   }
 }
 
-void FileContent::move_position(int offset)
+void FileContent::move_position(uint64 offset)
 {
-  if (m_position + offset > m_file_bytes.size() + 16)
+  if (offset < 0)
   {
-    return;
+    if (m_position + offset < 1)
+    {
+      return;
+    }
+  }
+  else
+  {
+    if (m_position + offset > m_file_bytes.size() + 16)
+    {
+      return;
+    }
   }
 
   m_position += offset;

@@ -161,6 +161,7 @@
     <ClInclude Include="scrollbar.h" />
     <ClInclude Include="settings_manager.h" />
     <ClInclude Include="titlebar.h" />
+    <ClInclude Include="ui.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="wxed.h" />
   </ItemGroup>
