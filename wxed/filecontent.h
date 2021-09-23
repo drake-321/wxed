@@ -11,7 +11,7 @@
 class FileContent : public Panel
 {
 public:
-  FileContent(std::filesystem::path file_path);
+  FileContent(const std::filesystem::path& file_path);
 
   void render() override;
   void move_position(uint64 offset);
@@ -19,6 +19,6 @@ public:
 private:
   void print_hex_output();
 
-  std::vector<char> m_file_bytes;
+  std::vector<unsigned char> m_file_bytes;
   uint64_t m_position;
-}; 
+};

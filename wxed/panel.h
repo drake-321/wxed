@@ -36,6 +36,11 @@ public:
     ::wrefresh(m_window.get());
   }
 
+  inline void clear() const
+  {
+    ::wclear(m_window.get());
+  }
+
   template<typename... Ts> // <is_formattable_v... Ts>
   inline void print_at(unsigned x, unsigned y, std::string_view fmt, Ts... Fargs) const
   {
@@ -53,8 +58,6 @@ protected:
   std::unique_ptr<WINDOW, WINDOW_Deleter> m_window;
 
 private:
-  static unsigned sm_colorPairIndex;
-
   std::string_view m_name;
   int m_posX, m_posY, m_width, m_height, m_foregroundColor, m_backgroundColor;
 };

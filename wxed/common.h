@@ -22,7 +22,7 @@ using uint32 = uint32_t;
 using uint64 = uint64_t;
 
 
-enum class WX_UIComponentIdentifiers
+enum class WX_UIComponentID
 {
   TitleBarComponent,
   FileContentComponent,
@@ -30,12 +30,12 @@ enum class WX_UIComponentIdentifiers
   FooterComponent
 };
 
-constexpr utils::CTMap<WX_UIComponentIdentifiers, std::string_view, 4> WX_UIComponentNames{
+constexpr utils::CTMap<WX_UIComponentID, std::string_view, 4> WX_UIComponentNames{
   {
-    { WX_UIComponentIdentifiers::TitleBarComponent, "TitleBar" },
-    { WX_UIComponentIdentifiers::FileContentComponent, "FileContent" },
-    { WX_UIComponentIdentifiers::ScrollBarComponent, "ScrollBar" },
-    { WX_UIComponentIdentifiers::FooterComponent, "Footer" },
+    { WX_UIComponentID::TitleBarComponent, "TitleBar" },
+    { WX_UIComponentID::FileContentComponent, "FileContent" },
+    { WX_UIComponentID::ScrollBarComponent, "ScrollBar" },
+    { WX_UIComponentID::FooterComponent, "Footer" },
   }
 };
 
