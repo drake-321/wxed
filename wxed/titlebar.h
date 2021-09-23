@@ -10,7 +10,7 @@ class TitleBar : public Panel
 {
 public:
   TitleBar()
-    : Panel(WX_UIComponentNames[WX_UIComponentID::TitleBarComponent], 0, 0, get_curses_max_x(), 1, COLOR_BLACK, COLOR_WHITE)
+    : Panel(WX_UIComponentNames[WX_UIComponentID::TitleBarComponent], 0, 0, utils::get_curses_max_x(), 1, COLOR_BLACK, COLOR_WHITE)
   {
   }
 

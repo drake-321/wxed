@@ -4,13 +4,11 @@
 #include "panel.h"
 #include "utils.h"
 
-using namespace utils;
-
 class Footer : public Panel
 {
 public:
   Footer()
-    : Panel(WX_UIComponentNames[WX_UIComponentID::FooterComponent], 0, get_curses_max_y() - 1, get_curses_max_x(), 1, COLOR_BLACK, COLOR_WHITE)
+    : Panel(WX_UIComponentNames[WX_UIComponentID::FooterComponent], 0, utils::get_curses_max_y() - 1, utils::get_curses_max_x(), 1, COLOR_BLACK, COLOR_WHITE)
   {
   }
 
