@@ -6,8 +6,6 @@
 #include "panel.h"
 #include "utils.h"
 
-using namespace utils;
-
 class TitleBar : public Panel
 {
 public:

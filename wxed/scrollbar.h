@@ -3,8 +3,6 @@
 #include "panel.h"
 #include "utils.h"
 
-using namespace utils;
-
 class ScrollBar : public Panel
 {
 public:
