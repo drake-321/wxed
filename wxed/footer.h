@@ -4,7 +4,7 @@
 #include "panel.h"
 #include "utils.h"
 
-class Footer : public Panel
+class Footer final : public Panel
 {
 public:
   Footer()

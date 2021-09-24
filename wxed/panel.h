@@ -2,6 +2,7 @@
 
 #include <string_view>
 #include <memory>
+#include <stdexcept>
 #include <type_traits>
 
 #include <curses.h>
@@ -29,7 +30,7 @@ class Panel
 {
 public:
   Panel(std::string_view name, int posX, int posY, int width, int height, int foreground_color, int background_color);
-  ~Panel();
+  virtual ~Panel();
 
   inline void refresh() const
   {
@@ -44,10 +45,15 @@ public:
   template<typename... Ts> // <is_formattable_v... Ts>
   inline void print_at(unsigned x, unsigned y, std::string_view fmt, Ts... Fargs) const
   {
+    if (x > m_width || y > m_height)
+    {
+      throw std::runtime_error(__func__);
+    }
+
     ::mvwprintw(m_window.get(), y, x, fmt.data(), Fargs...);
   }
 
-  inline std::string_view get_name()
+  inline std::string_view get_name() const
   {
     return m_name;
   }

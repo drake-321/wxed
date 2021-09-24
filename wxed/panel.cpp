@@ -10,11 +10,7 @@ Panel::Panel(std::string_view name, int posX, int posY, int width, int height, i
 {
   static unsigned sm_colorPairIndex = 1;
 
-  WINDOW* window = newwin(height, width, posY, posX);
-
-  m_window = std::unique_ptr<WINDOW, WINDOW_Deleter>(window);
-
-  //m_window = std::unique_ptr<WINDOW, WINDOW_Deleter>(::newwin(height, width, posY, posX));
+  m_window = std::unique_ptr<WINDOW, WINDOW_Deleter>(::newwin(height, width, posY, posX));
 
   ::init_pair(sm_colorPairIndex, m_foregroundColor, m_backgroundColor);
   ::wbkgd(m_window.get(), COLOR_PAIR(sm_colorPairIndex));

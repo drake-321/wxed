@@ -1,7 +1,7 @@
 #include "keybinds.h"
 
 #include <memory>
-#include <algorithm>
+#include <concepts>
 
 #include "common.h"
 #include "ui.h"
@@ -17,8 +17,15 @@ void Keybinds::register_all(const std::vector<std::unique_ptr<Panel>>& panels)
     return;
   }
 
-  // get panel const_iterator
-  auto file_content_it = std::find_if(panels.begin(), panels.end(), [](const decltype(*panels.begin())& panel) {
+  ////
+  ////  register keybinds for interactive panels
+  ////
+  //for (auto& panel : panels)
+  //{
+  //  auto component = dynamic_cast<Interactive*>(panel);
+  //}
+
+  auto file_content_it = std::ranges::find_if(panels, [](decltype(*panels.begin())& panel) {
     return panel->get_name() == WX_UIComponentNames[WX_UIComponentID::FileContentComponent];
     });
 

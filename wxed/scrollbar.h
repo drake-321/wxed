@@ -3,7 +3,7 @@
 #include "panel.h"
 #include "utils.h"
 
-class ScrollBar : public Panel
+class ScrollBar final : public Panel
 {
 public:
   ScrollBar()
@@ -11,7 +11,8 @@ public:
   {
   }
 
-  void render() override {
+  void render() override
+  {
     print_at(0, 0, "-");
   }
 };

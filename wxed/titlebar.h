@@ -6,7 +6,7 @@
 #include "panel.h"
 #include "utils.h"
 
-class TitleBar : public Panel
+class TitleBar final : public Panel
 {
 public:
   TitleBar()
@@ -14,7 +14,8 @@ public:
   {
   }
 
-  void render() override {
+  void render() override
+  {
     print_at(0, 0, "wxed %s", WX_Version);
   }
 };

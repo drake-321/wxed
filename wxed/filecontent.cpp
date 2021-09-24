@@ -6,6 +6,7 @@
 #include <cctype>
 
 #include "common.h"
+#include "input.h"
 #include "utils.h"
 
 FileContent::FileContent(const std::filesystem::path& file_path)
@@ -22,21 +23,49 @@ FileContent::FileContent(const std::filesystem::path& file_path)
   //m_file_bytes.assign(std::istreambuf_iterator<char>(input), std::istream_iterator<char>());
 
   m_file_bytes = std::vector<unsigned char>({
-    std::istreambuf_iterator<char>(input),
+    std::istreambuf_iterator(input),
     std::istreambuf_iterator<char>()
     });
 }
 
 void FileContent::render()
 {
-  print_hex_output();
+  switch (m_current_format)
+  {
+  case OutputFormat::text:
+    print_text_output();
+    break;
+  case OutputFormat::hexadecimal:
+    print_hex_output();
+    break;
+  case OutputFormat::disassembly:
+    throw "Not implemented";
+  }
 }
 
-void FileContent::print_hex_output()
+//void FileContent::register_keybinds()
+//{
+//  auto& input_processor = InputProcessor::get_instance();
+//
+//  input_processor.register_keybind('j', [&]() {
+//    move_position(16);
+//    });
+//
+//  input_processor.register_keybind('k', [&]() {
+//    move_position(-16);
+//    });
+//}
+
+void FileContent::print_text_output() const
+{
+  bool exit_loop = false;
+}
+
+void FileContent::print_hex_output() const
 {
   bool exit_loop = false;
 
-  for (uint64 i = m_position; i < (utils::get_curses_max_y() - 2) * 16; i += 16)
+  for (uint64 i = m_position; i < m_position + (utils::get_curses_max_y() - 2) * 16; i += 16)
   {
     // print bytes in hex
     unsigned hex_position_offset = 11;
@@ -50,10 +79,8 @@ void FileContent::print_hex_output()
         break;
       }
 
-      print_at(hex_position_offset, i / 16 - m_position / 16, "%02x", m_file_bytes[i + j]);
+      print_at(hex_position_offset, (i - m_position) / 16, "%02x", m_file_bytes[i + j]);
       hex_position_offset += 3;
-
-      refresh();
     }
 
     // print alphanumeric characters
@@ -67,13 +94,13 @@ void FileContent::print_hex_output()
         break;
       }
 
-      char ascii_character = std::isalnum(m_file_bytes[i + j]) ? m_file_bytes[i + j] : '.';
-      print_at(ascii_position_offset, i / 16 - m_position / 16, "%c", ascii_character);
+      const char ascii_character = std::isalnum(m_file_bytes[i + j]) ? m_file_bytes[i + j] : '.';
+      print_at(ascii_position_offset, (i - m_position) / 16, "%c", ascii_character);
       ascii_position_offset++;
     }
 
     // print current position in hex
-    print_at(0, i / 16, "%08x:", i);
+    print_at(0, (i - m_position) / 16, "%08x:", i);
 
     if (exit_loop)
     {
@@ -82,7 +109,7 @@ void FileContent::print_hex_output()
   }
 }
 
-void FileContent::move_position(uint64 offset)
+void FileContent::move_position(const int64 offset)
 {
   if (offset < 0)
   {

@@ -68,5 +68,8 @@
     <ClInclude Include="ui.h">
       <Filter>code</Filter>
     </ClInclude>
+    <ClInclude Include="interactive.h">
+      <Filter>code</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

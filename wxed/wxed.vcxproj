@@ -156,6 +156,7 @@
     <ClInclude Include="filecontent.h" />
     <ClInclude Include="footer.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="interactive.h" />
     <ClInclude Include="keybinds.h" />
     <ClInclude Include="panel.h" />
     <ClInclude Include="scrollbar.h" />
