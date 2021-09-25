@@ -44,6 +44,9 @@ void Wxed::init()
   // read function keys
   ::keypad(::stdscr, true);
 
+  // hide cursor
+  ::curs_set(0);
+
   ::start_color();
 
   m_initialized = true;

@@ -113,6 +113,7 @@ void FileContent::move_position(const int64 offset)
 {
   if (offset < 0)
   {
+    // ugly cast required, otherwise unsigned int result can overflow below zero
     if (static_cast<int64>(m_position) + offset < 0)
     {
       return;
@@ -120,6 +121,7 @@ void FileContent::move_position(const int64 offset)
   }
   else
   {
+    // TODO: fix this
     if (m_position + offset > m_file_bytes.size() + 16)
     {
       return;

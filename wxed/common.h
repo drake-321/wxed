@@ -30,7 +30,7 @@ enum class WX_UIComponentID
   FooterComponent
 };
 
-constexpr utils::CTMap<WX_UIComponentID, std::string_view, 4> WX_UIComponentNames{
+constexpr static utils::CTMap<WX_UIComponentID, std::string_view, 4> WX_UIComponentNames{
   {
     { WX_UIComponentID::TitleBarComponent, "TitleBar" },
     { WX_UIComponentID::FileContentComponent, "FileContent" },

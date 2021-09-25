@@ -33,6 +33,8 @@ private:
   void load_from_file(std::filesystem::path path);
 
   static bool sm_loaded;
+
+  // this cannot be a constant expression as settings may change during runtime
   std::map<SettingKey, std::string_view> m_settings = {
     { SettingKey::TestSetting, "hello" },
     { SettingKey::TestSetting2, "hello"}
