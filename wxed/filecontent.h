@@ -6,10 +6,10 @@
 
 #include "common.h"
 #include "panel.h"
-//#include "interactive.h"
+#include "interactive.h"
 #include "utils.h"
 
-class FileContent final : public Panel // , public Interactive
+class FileContent final : public Panel, public Interactive
 {
   enum class OutputFormat
   {
@@ -22,6 +22,7 @@ public:
   FileContent(const std::filesystem::path& file_path);
 
   void render() override;
+  void register_keybinds() override;
 
   void move_position(const int64 offset);
 

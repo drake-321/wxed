@@ -43,18 +43,18 @@ void FileContent::render()
   }
 }
 
-//void FileContent::register_keybinds()
-//{
-//  auto& input_processor = InputProcessor::get_instance();
-//
-//  input_processor.register_keybind('j', [&]() {
-//    move_position(16);
-//    });
-//
-//  input_processor.register_keybind('k', [&]() {
-//    move_position(-16);
-//    });
-//}
+void FileContent::register_keybinds()
+{
+  auto& input_processor = InputProcessor::get_instance();
+
+  input_processor.register_keybind('j', [&]() {
+    move_position(16);
+    });
+
+  input_processor.register_keybind('k', [&]() {
+    move_position(-16);
+    });
+}
 
 void FileContent::print_text_output() const
 {
@@ -113,7 +113,7 @@ void FileContent::move_position(const int64 offset)
 {
   if (offset < 0)
   {
-    if (m_position + offset < 1)
+    if (static_cast<int64>(m_position) + offset < 0)
     {
       return;
     }

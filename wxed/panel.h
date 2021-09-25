@@ -30,7 +30,7 @@ class Panel
 {
 public:
   Panel(std::string_view name, int posX, int posY, int width, int height, int foreground_color, int background_color);
-  virtual ~Panel();
+  virtual ~Panel() = default;
 
   inline void refresh() const
   {

@@ -20,7 +20,3 @@ Panel::Panel(std::string_view name, int posX, int posY, int width, int height, i
   ::touchwin(m_window.get());
 }
 
-Panel::~Panel()
-{
-}
-
