@@ -19,7 +19,7 @@ public:
   Wxed(Wxed const&) = delete;
   void operator=(Wxed const&) = delete;
 
-  void run(std::filesystem::path file_path);
+  void run(std::filesystem::path file_path) const;
 
 private:
   void init();

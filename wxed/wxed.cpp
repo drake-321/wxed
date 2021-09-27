@@ -1,10 +1,7 @@
 #include "wxed.h"
 
-#include <string>
 #include <vector>
-#include <algorithm>
 #include <memory>
-#include <iterator>
 
 #include <curses.h>
 
@@ -52,7 +49,7 @@ void Wxed::init()
   m_initialized = true;
 }
 
-void Wxed::run(std::filesystem::path file_path)
+void Wxed::run(std::filesystem::path file_path) const
 {
   auto& input_processor = InputProcessor::get_instance();
 
@@ -70,7 +67,7 @@ void Wxed::run(std::filesystem::path file_path)
   {
     ::refresh();
 
-    for (auto& panel : panels)
+    for (const auto& panel : panels)
     {
       panel->clear();
       panel->render();
