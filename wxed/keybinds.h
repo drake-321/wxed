@@ -1,9 +1,6 @@
 #pragma once
 
 #include <memory>
-#include <type_traits>
-
-#include <curses.h>
 
 #include "ui.h"
 

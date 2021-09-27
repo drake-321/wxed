@@ -29,21 +29,21 @@ struct WINDOW_Deleter
 class Panel
 {
 public:
-  Panel(std::string_view name, int posX, int posY, int width, int height, int foreground_color, int background_color);
+  Panel(std::string_view name, int posX, int posY, int width, int height, short foreground_color, short background_color);
   virtual ~Panel() = default;
 
-  inline void refresh() const
+  void refresh() const
   {
     ::wrefresh(m_window.get());
   }
 
-  inline void clear() const
+  void clear() const
   {
     ::wclear(m_window.get());
   }
 
   template<typename... Ts> // <is_formattable_v... Ts>
-  inline void print_at(unsigned x, unsigned y, std::string_view fmt, Ts... Fargs) const
+  void print_at(unsigned x, unsigned y, std::string_view fmt, Ts... Fargs) const
   {
     if (x > m_width || y > m_height)
     {
@@ -53,7 +53,8 @@ public:
     ::mvwprintw(m_window.get(), y, x, fmt.data(), Fargs...);
   }
 
-  inline std::string_view get_name() const
+  [[nodiscard]]
+  std::string_view get_name() const
   {
     return m_name;
   }
@@ -65,6 +66,7 @@ protected:
 
 private:
   std::string_view m_name;
-  int m_posX, m_posY, m_width, m_height, m_foregroundColor, m_backgroundColor;
+  int m_posX, m_posY, m_width, m_height;
+  short m_foregroundColor, m_backgroundColor;
 };
 

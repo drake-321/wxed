@@ -7,7 +7,6 @@
 #include "common.h"
 #include "panel.h"
 #include "interactive.h"
-#include "utils.h"
 
 class FileContent final : public Panel, public Interactive
 {
@@ -17,6 +16,13 @@ class FileContent final : public Panel, public Interactive
     hexadecimal,
     disassembly
   };
+
+  //enum class Mode
+  //{
+  //  viewer,
+  //  editor,
+  //  editing
+  //};
 
 public:
   FileContent(const std::filesystem::path& file_path);

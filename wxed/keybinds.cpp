@@ -14,8 +14,7 @@ void Keybinds::register_all(const std::vector<std::unique_ptr<Panel>>& panels)
   for (auto& panel : panels)
   {
     // if panel implements the interactive abstract class, call register_keybinds() method
-    auto interactive_panel = dynamic_cast<Interactive *>(panel.get());
-    if (interactive_panel)
+    if (const auto interactive_panel = dynamic_cast<Interactive *>(panel.get()); interactive_panel)
     {
       interactive_panel->register_keybinds();
     }
