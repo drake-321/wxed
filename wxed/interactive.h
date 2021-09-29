@@ -1,7 +1,5 @@
 #pragma once
 
-#include "panel.h"
-
 class Interactive
 {
 public:

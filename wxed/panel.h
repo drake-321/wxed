@@ -1,11 +1,11 @@
 #pragma once
 
-#include <string_view>
 #include <memory>
 #include <stdexcept>
-#include <type_traits>
 
 #include <curses.h>
+
+#include "common.h"
 
 struct WINDOW_Deleter
 {
@@ -22,9 +22,6 @@ struct WINDOW_Deleter
 //concept is_formattable_v = requires {
 //  std::disjunction_v<std::is_fundamental_v<Ts ...>, is_string_v<Ts ...>>;
 //};
-
-// maybe turn this into an inheritable abstract singleton class
-// https://sourcemaking.com/design_patterns/singleton/cpp/2
 
 class Panel
 {

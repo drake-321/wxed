@@ -9,13 +9,13 @@ namespace utils
   //
   static int maxY, maxX;
 
-  static inline int get_curses_max_x()
+  static int get_curses_max_x()
   {
     getmaxyx(::stdscr, maxY, maxX);
     return maxX;
   }
 
-  static inline int get_curses_max_y()
+  static int get_curses_max_y()
   {
     getmaxyx(::stdscr, maxY, maxX);
     return maxY;
@@ -40,6 +40,7 @@ namespace utils
     }
 
   private:
+    [[nodiscard]]
     constexpr Value Get(Key key, int i = 0) const
     {
       return i == N ?
