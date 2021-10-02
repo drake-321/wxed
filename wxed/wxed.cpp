@@ -44,12 +44,17 @@ void Wxed::init()
   // hide cursor
   ::curs_set(0);
 
+  // init colors and color pairs
   ::start_color();
+  for (const auto& component_color : WX_UIComponentColors)
+  {
+    ::init_pair(static_cast<short>(component_color.first), component_color.second.first, component_color.second.second);
+  }
 
   m_initialized = true;
 }
 
-void Wxed::run(std::filesystem::path file_path) const
+void Wxed::run(const std::filesystem::path& file_path) const
 {
   auto& input_processor = InputProcessor::get_instance();
 

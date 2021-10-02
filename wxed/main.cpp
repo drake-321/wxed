@@ -29,6 +29,6 @@ int main(int argc, char *argv[])
     return 1;
   }
 
-  auto& wxed = Wxed::get_instance();
+  const auto& wxed = Wxed::get_instance();
   wxed.run(file_path);
 }

@@ -19,10 +19,10 @@ public:
   Wxed(Wxed const&) = delete;
   void operator=(Wxed const&) = delete;
 
-  void run(std::filesystem::path file_path) const;
+  void run(const std::filesystem::path& file_path) const;
 
 private:
-  void init();
+  static void init();
 
-  bool m_initialized;
+  static bool m_initialized;
 };

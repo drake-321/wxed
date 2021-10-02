@@ -8,7 +8,7 @@ class Footer final : public Panel
 {
 public:
   Footer()
-    : Panel(WX_UIComponentNames[WX_UIComponentID::FooterComponent], 0, utils::get_curses_max_y() - 1, utils::get_curses_max_x(), 1, COLOR_BLACK, COLOR_WHITE)
+    : Panel(WX_UIWindowNames[WX_UIWindow::Footer], 0, utils::get_curses_max_y() - 1, utils::get_curses_max_x(), 1, WX_UIColor::Footer)
   {
   }
 

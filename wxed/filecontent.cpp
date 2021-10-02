@@ -10,7 +10,7 @@
 #include "utils.h"
 
 FileContent::FileContent(const std::filesystem::path& file_path)
-  : Panel(WX_UIComponentNames[WX_UIComponentID::FileContentComponent], 1, 1, utils::get_curses_max_x() - 1, utils::get_curses_max_y() - 2, COLOR_WHITE, COLOR_BLACK)
+  : Panel(WX_UIWindowNames[WX_UIWindow::FileContent], 1, 1, utils::get_curses_max_x() - 1, utils::get_curses_max_y() - 2, WX_UIColor::FileContent)
 {
   std::ifstream input{ file_path, std::ios::binary };
   //m_file_bytes = std::vector<char>();

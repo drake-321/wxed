@@ -26,7 +26,7 @@ struct WINDOW_Deleter
 class Panel
 {
 public:
-  Panel(std::string_view name, int posX, int posY, int width, int height, short foreground_color, short background_color);
+  Panel(std::string_view name, int posX, int posY, int width, int height, WX_UIColor color);
   virtual ~Panel() = default;
 
   void refresh() const
