@@ -131,3 +131,8 @@ void FileContent::move_position(const int64 offset)
   m_position += offset;
 }
 
+void FileContent::change_mode(Mode mode)
+{
+  m_current_mode = mode;
+}
+

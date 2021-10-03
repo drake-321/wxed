@@ -1,10 +1,13 @@
 #pragma once
 
+#include <curses.h>
+
 #include "common.h"
 #include "panel.h"
 #include "utils.h"
+#include "input.h"
 
-class Footer final : public Panel
+class Footer final : public Panel, public Interactive
 {
 public:
   Footer()
@@ -13,6 +16,26 @@ public:
   }
 
   void render() override {
-    print_at(0, 0, "footer");
   }
-}; 
+
+  void register_keybinds() override
+  {
+    auto& input_processor = InputProcessor::get_instance();
+
+    input_processor.register_keybind(':', [&]() {
+      print_at(0, 0, ":");
+
+      ::echo();
+      ::curs_set(1);
+
+      ::move(m_posY, m_posX);
+
+      char buf[50];
+      ::wgetnstr(m_window.get(), buf, 50);
+
+
+      ::curs_set(0);
+      ::noecho();
+      });
+  }
+};

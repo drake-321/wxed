@@ -71,5 +71,8 @@
     <ClInclude Include="interactive.h">
       <Filter>code</Filter>
     </ClInclude>
+    <ClInclude Include="dialog.h">
+      <Filter>code\ui</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

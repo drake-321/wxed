@@ -7,7 +7,6 @@
 
 #include "input.h"
 #include "keybinds.h"
-
 #include "ui.h"
 
 Wxed::Wxed()

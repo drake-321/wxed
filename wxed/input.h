@@ -22,7 +22,7 @@ public:
   void operator=(InputProcessor const&) = delete;
 
   void process();
-  void register_keybind(char key, fn_ptr callback);
+  void register_keybind(char key, const fn_ptr& callback);
 
 private:
   std::map<char, fn_ptr> m_keybinds{};

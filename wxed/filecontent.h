@@ -31,6 +31,7 @@ public:
   void register_keybinds() override;
 
   void move_position(int64 offset);
+  void change_mode(Mode mode);
 
 private:
   void print_text_output() const;

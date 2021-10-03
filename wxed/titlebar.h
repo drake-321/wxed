@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string>
-
 #include "common.h"
 #include "panel.h"
 #include "utils.h"

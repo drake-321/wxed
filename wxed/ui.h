@@ -4,3 +4,4 @@
 #include "scrollbar.h"
 #include "filecontent.h"
 #include "footer.h"
+#include "dialog.h"

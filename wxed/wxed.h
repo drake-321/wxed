@@ -2,6 +2,8 @@
 
 #include <filesystem>
 
+#include "panel.h"
+
 class Wxed
 {
 public:
@@ -22,7 +24,7 @@ public:
   void run(const std::filesystem::path& file_path) const;
 
 private:
-  static void init();
+  void init();
 
-  static bool m_initialized;
+  bool m_initialized = false;
 };

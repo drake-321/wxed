@@ -60,10 +60,9 @@ public:
 
 protected:
   std::unique_ptr<WINDOW, WINDOW_Deleter> m_window;
+  int m_posX, m_posY, m_width, m_height;
 
 private:
   std::string_view m_name;
-  int m_posX, m_posY, m_width, m_height;
-  short m_foregroundColor, m_backgroundColor;
 };
 
