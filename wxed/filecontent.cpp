@@ -48,11 +48,43 @@ void FileContent::register_keybinds()
   auto& input_processor = InputProcessor::get_instance();
 
   input_processor.register_keybind('j', [&]() {
-    move_position(16);
+    if (m_current_mode == Mode::viewer)
+    {
+      move_position(16);
+    }
+    else if (m_current_mode == Mode::editor)
+    {
+      m_cursor_position++;
+    }
     });
 
   input_processor.register_keybind('k', [&]() {
-    move_position(-16);
+    if (m_current_mode == Mode::viewer)
+    {
+      move_position(-16);
+    }
+    else if (m_current_mode == Mode::editor)
+    {
+      if (m_cursor_position - 1 > 0)
+      {
+        m_cursor_position--;
+      }
+    }
+    });
+
+  input_processor.register_keybind('e', [&](){
+    if (m_current_mode == Mode::viewer)
+    {
+      m_current_mode = Mode::editor;
+    }
+    });
+
+  input_processor.register_keybind(KEY_EXIT, [&]()
+    {
+      if (m_current_mode != Mode::viewer)
+      {
+        m_current_mode = Mode::viewer;
+      }
     });
 }
 
@@ -79,7 +111,17 @@ void FileContent::print_hex_output() const
         break;
       }
 
-      print_at(hex_position_offset, (i - m_position) / 16, "%02x", m_file_bytes[i + j]);
+      if (m_current_mode == Mode::editor && i + j == m_cursor_position)
+      {
+        ::wattron(m_window.get(), COLOR_PAIR(WX_UIColor::SelectedByte));
+        print_at(hex_position_offset, (i - m_position) / 16, "%02x", m_file_bytes[i + j]);
+        ::wattron(m_window.get(), COLOR_PAIR(WX_UIColor::UnselectedByte));
+      }
+      else
+      {
+        print_at(hex_position_offset, (i - m_position) / 16, "%02x", m_file_bytes[i + j]);
+      }
+
       hex_position_offset += 3;
     }
 
@@ -95,7 +137,17 @@ void FileContent::print_hex_output() const
       }
 
       const char ascii_character = std::isalnum(m_file_bytes[i + j]) ? m_file_bytes[i + j] : '.';
-      print_at(ascii_position_offset, (i - m_position) / 16, "%c", ascii_character);
+      if (m_current_mode == Mode::editor && i + j == m_cursor_position)
+      {
+        ::wattron(m_window.get(), COLOR_PAIR(WX_UIColor::SelectedByte));
+        print_at(ascii_position_offset, (i - m_position) / 16, "%c", ascii_character);
+        ::wattron(m_window.get(), COLOR_PAIR(WX_UIColor::UnselectedByte));
+      }
+      else
+      {
+        print_at(ascii_position_offset, (i - m_position) / 16, "%c", ascii_character);
+      }
+
       ascii_position_offset++;
     }
 
