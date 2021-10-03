@@ -54,7 +54,7 @@ void FileContent::register_keybinds()
     }
     else if (m_current_mode == Mode::editor)
     {
-      m_cursor_position++;
+      m_cursor_position += 16;
     }
     });
 
@@ -65,32 +65,65 @@ void FileContent::register_keybinds()
     }
     else if (m_current_mode == Mode::editor)
     {
-      if (m_cursor_position - 1 > 0)
+      if (m_cursor_position - 16 >= 0)
       {
-        m_cursor_position--;
+        m_cursor_position -= 16;
       }
     }
     });
 
-  input_processor.register_keybind('e', [&](){
+  input_processor.register_keybind('h', [&]() {
+    if (m_current_mode == Mode::editor && m_cursor_position - 1 >= 0)
+    {
+      m_cursor_position--;
+    }
+    });
+
+  input_processor.register_keybind('l', [&]() {
+    if (m_current_mode == Mode::editor)
+    {
+      m_cursor_position++;
+    }
+    });
+
+  input_processor.register_keybind('e', [&]() {
     if (m_current_mode == Mode::viewer)
     {
+      m_cursor_position = m_position;
       m_current_mode = Mode::editor;
     }
     });
 
-  input_processor.register_keybind(KEY_EXIT, [&]()
+  input_processor.register_keybind('q', [&]() {
+    if (m_current_mode != Mode::viewer)
     {
-      if (m_current_mode != Mode::viewer)
+      m_cursor_position = 0;
+      m_current_mode = Mode::viewer;
+    }
+    });
+
+  input_processor.register_keybind('n', [&]() {
+    if (m_current_mode == Mode::viewer)
+    {
+      if (m_current_format == OutputFormat::text)
       {
-        m_current_mode = Mode::viewer;
+        m_current_format = OutputFormat::hexadecimal;
       }
+      else if (m_current_format == OutputFormat::hexadecimal)
+      {
+        m_current_format = OutputFormat::disassembly;
+      }
+      else
+      {
+        m_current_format = OutputFormat::text;
+      }
+    }
     });
 }
 
 void FileContent::print_text_output() const
 {
-  bool exit_loop = false;
+  print_at(0, 0, "not implemented");
 }
 
 void FileContent::print_hex_output() const

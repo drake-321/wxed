@@ -40,9 +40,9 @@ private:
 
   std::vector<unsigned char> m_file_bytes;
 
-  uint64_t m_position = 0;
-  uint64_t m_cursor_position = 0;
+  int64_t m_position = 0;
+  int64_t m_cursor_position = 0;
 
-  OutputFormat m_current_format = OutputFormat::hexadecimal;
+  OutputFormat m_current_format = OutputFormat::text;
   Mode m_current_mode = Mode::viewer;
 };

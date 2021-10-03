@@ -10,7 +10,7 @@ inline void print_usage()
   std::exit(1);
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
   std::filesystem::path file_path;
 
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     print_usage();
   }
 
-  if (!std::filesystem::exists(file_path))
+  if (!exists(file_path))
   {
     std::cerr << "File does not exist.\n";
     return 1;
