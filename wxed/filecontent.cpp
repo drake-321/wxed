@@ -5,6 +5,8 @@
 #include <cstdint>
 #include <cctype>
 
+#include <Zydis/Zydis.h>
+
 #include "common.h"
 #include "input.h"
 #include "utils.h"
@@ -47,6 +49,7 @@ void FileContent::register_keybinds()
 {
   auto& input_processor = InputProcessor::get_instance();
 
+  // TODO: refactor modes by moving mode logic to the keybinds class
   input_processor.register_keybind('j', [&]() {
     if (m_current_mode == Mode::viewer)
     {
@@ -192,6 +195,17 @@ void FileContent::print_hex_output() const
       break;
     }
   }
+}
+
+void FileContent::print_disassembly_output() const
+{
+  //ZydisDecoder decoder;
+  //ZydisDecoderInit(&decoder, ZYDIS_MACHINE_MODE_LONG_64, ZYDIS_ADDRESS_WIDTH_64);
+
+  //ZydisFormatter formatter;
+  //ZydisFormatterInit(&formatter, ZYDIS_FORMATTER_STYLE_INTEL);
+
+
 }
 
 void FileContent::move_position(const int64 offset)

@@ -36,7 +36,7 @@ public:
 private:
   void print_text_output() const;
   void print_hex_output() const;
-  //void print_disassembly_output() const;
+  void print_disassembly_output() const;
 
   std::vector<unsigned char> m_file_bytes;
 
