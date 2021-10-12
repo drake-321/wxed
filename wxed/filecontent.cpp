@@ -212,7 +212,6 @@ void FileContent::move_position(const int64 offset)
 {
   if (offset < 0)
   {
-    // ugly cast required, otherwise unsigned int result can overflow below zero
     if (m_position + offset < 0)
     {
       return;

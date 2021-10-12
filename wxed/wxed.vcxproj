@@ -145,10 +145,8 @@
   <ItemGroup>
     <ClCompile Include="filecontent.cpp" />
     <ClCompile Include="input.cpp" />
-    <ClCompile Include="keybinds.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="panel.cpp" />
-    <ClCompile Include="settings_manager.cpp" />
     <ClCompile Include="wxed.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,7 +159,6 @@
     <ClInclude Include="keybinds.h" />
     <ClInclude Include="panel.h" />
     <ClInclude Include="scrollbar.h" />
-    <ClInclude Include="settings_manager.h" />
     <ClInclude Include="titlebar.h" />
     <ClInclude Include="ui.h" />
     <ClInclude Include="utils.h" />

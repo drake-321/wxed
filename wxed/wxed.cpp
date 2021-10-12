@@ -64,7 +64,7 @@ void Wxed::run(const std::filesystem::path& file_path) const
   panels.push_back(std::make_unique<Footer>());
 
   // register keybinds
-  Keybinds::register_all(panels);
+  keybinds::register_all(panels);
 
   // main loop
   while (true)

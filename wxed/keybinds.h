@@ -4,23 +4,27 @@
 
 #include "ui.h"
 
-class Keybinds
+namespace keybinds
 {
-public:
-  static Keybinds& get_instance()
+  static void register_all(const std::vector<std::unique_ptr<Panel>>& panels)
   {
-    static Keybinds inst;
-    return inst;
+    static bool s_registered;
+
+    if (s_registered)
+    {
+      return;
+    }
+
+    for (auto& panel : panels)
+    {
+      // if panel implements the interactive abstract class, call register_keybinds() method
+      if (const auto interactive_panel = dynamic_cast<Interactive*>(panel.get()); interactive_panel)
+      {
+        interactive_panel->register_keybinds();
+      }
+    }
+
+    s_registered = true;
   }
-
-private:
-  Keybinds() = default;
-  ~Keybinds() = default;
-
-public:
-  Keybinds(Keybinds const&) = delete;
-  void operator=(Keybinds const&) = delete;
-
-  static void register_all(const std::vector<std::unique_ptr<Panel>>& panels);
 };
 

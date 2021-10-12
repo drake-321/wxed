@@ -29,14 +29,14 @@ public:
   }
 
   template<typename... Ts>
-  void print_at(unsigned x, unsigned y, std::string_view fmt, Ts... Fargs) const
+  void print_at(unsigned x, unsigned y, std::string_view fmt, Ts... Targs) const
   {
     if (x > m_width || y > m_height)
     {
       throw std::runtime_error(__func__);
     }
 
-    ::mvwprintw(m_window.get(), y, x, fmt.data(), Fargs...);
+    ::mvwprintw(m_window.get(), y, x, fmt.data(), Targs...);
   }
 
   [[nodiscard]]
