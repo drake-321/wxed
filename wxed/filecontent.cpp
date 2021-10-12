@@ -49,7 +49,7 @@ void FileContent::register_keybinds()
 {
   auto& input_processor = InputProcessor::get_instance();
 
-  // TODO: refactor modes by moving mode logic to the keybinds class
+  // TODO: refactor
   input_processor.register_keybind('j', [&]() {
     if (m_current_mode == Mode::viewer)
     {
